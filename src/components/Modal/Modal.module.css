@@ -1,0 +1,45 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+.dialog {
+  background: var(--ac-surface-overlay);
+  border: 1px solid var(--ac-surface-border);
+  border-radius: var(--ac-radius-2xl);
+  box-shadow: var(--ac-shadow-xl);
+  overflow: hidden;
+}
+
+.header {
+  padding: 20px 24px;
+  font-family: var(--ac-font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ac-n-100);
+  border-bottom: 1px solid var(--ac-surface-border);
+}
+
+.body {
+  padding: 20px 24px;
+  font-family: var(--ac-font-body);
+  font-size: 13.5px;
+  color: var(--ac-n-300);
+  line-height: 1.6;
+}
+
+.footer {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-end;
+  border-top: 1px solid var(--ac-surface-border);
+}
+

@@ -1,0 +1,60 @@
+.container {
+  overflow-x: auto;
+  border-radius: var(--ac-radius-lg);
+  border: 1px solid var(--ac-surface-border);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.thead {
+  background: var(--ac-surface-elevated);
+  position: sticky;
+  top: 0;
+}
+
+.th {
+  padding: 10px 14px;
+  font-family: var(--ac-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ac-n-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+  border-bottom: 1px solid var(--ac-surface-border);
+}
+
+.table[data-compact] .th {
+  padding: 8px 10px;
+}
+
+.td {
+  padding: 10px 14px;
+  font-family: var(--ac-font-body);
+  font-size: 13px;
+  color: var(--ac-n-200);
+  border-bottom: 1px solid var(--ac-surface-border);
+}
+
+.table[data-compact] .td {
+  padding: 8px 10px;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.row[data-striped]:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.row[data-striped]:nth-child(odd):hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.row[data-clickable] {
+  cursor: pointer;
+}

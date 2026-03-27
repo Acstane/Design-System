@@ -1,0 +1,72 @@
+.accordion {
+  border-radius: var(--ac-radius-xl);
+  border: 1px solid var(--ac-surface-border);
+  overflow: hidden;
+}
+
+.item {
+  border-bottom: 1px solid var(--ac-surface-border);
+}
+
+.item[data-last] {
+  border-bottom: none;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--ac-surface-elevated);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.trigger[data-open] {
+  background: var(--ac-surface-elevated);
+}
+
+.title {
+  font-family: var(--ac-font-body);
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--ac-n-300);
+}
+
+.title[data-open] {
+  color: var(--ac-n-100);
+}
+
+.chevron {
+  color: var(--ac-n-500);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+
+.chevron[data-open] {
+  transform: rotate(180deg);
+}
+
+.panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s;
+}
+
+.panel[data-open] {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.content {
+  padding: 0 18px 16px;
+  font-family: var(--ac-font-body);
+  font-size: 13.5px;
+  color: var(--ac-n-400);
+  line-height: 1.6;
+  background: var(--ac-surface-elevated);
+}

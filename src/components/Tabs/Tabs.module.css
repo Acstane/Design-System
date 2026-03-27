@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--ac-radius-lg);
+  padding: 3px;
+  border: 1px solid var(--ac-surface-border);
+}
+
+.tab {
+  padding: 7px 14px;
+  font-family: var(--ac-font-body);
+  font-size: 13px;
+  border-radius: var(--ac-radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--ac-n-500);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.tab[data-active] {
+  background: var(--ac-surface-elevated);
+  color: var(--ac-n-100);
+  font-weight: 600;
+  box-shadow: var(--ac-shadow-sm);
+}
