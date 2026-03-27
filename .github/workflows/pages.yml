@@ -2,7 +2,7 @@ name: Deploy Design System Docs
 
 on:
   push:
-    branches: [develop, main]
+    branches: [main]
 
 permissions:
   contents: read
