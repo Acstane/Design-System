@@ -57,13 +57,13 @@
 }
 
 .button[data-variant='secondary'] {
-  background: rgb(from var(--ac-pri-400) r g b / 0.06);
+  background: rgba(163, 56, 255, 0.06);
   color: var(--ac-pri-300);
-  border-color: rgb(from var(--ac-pri-400) r g b / 0.3);
+  border-color: rgba(163, 56, 255, 0.3);
 }
 
 .button[data-variant='secondary']:hover:not(:disabled) {
-  background: rgb(from var(--ac-pri-400) r g b / 0.12);
+  background: rgba(163, 56, 255, 0.12);
 }
 
 .button[data-variant='ghost'] {
@@ -77,9 +77,9 @@
 }
 
 .button[data-variant='danger'] {
-  background: rgb(from var(--ac-accent-red) r g b / 0.12);
+  background: rgba(239, 68, 68, 0.12);
   color: var(--ac-accent-red);
-  border-color: rgb(from var(--ac-accent-red) r g b / 0.3);
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 .button[data-variant='danger']:hover:not(:disabled) {

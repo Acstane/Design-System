@@ -1,0 +1,118 @@
+/* ─── Container ────────────────────────────────────── */
+
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 360px;
+  pointer-events: none;
+}
+
+.item {
+  pointer-events: auto;
+}
+
+/* ─── Toast ────────────────────────────────────────── */
+
+.toast {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--ac-surface-overlay);
+  border: 1px solid;
+  border-radius: var(--ac-radius-lg);
+  box-shadow: var(--ac-shadow-lg);
+  font-family: var(--ac-font-body);
+  position: relative;
+}
+
+.icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ac-n-100);
+  line-height: 1.3;
+}
+
+.message {
+  font-size: 12.5px;
+  color: var(--ac-n-200);
+  line-height: 1.4;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  color: var(--ac-n-500);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.close:hover {
+  color: var(--ac-n-200);
+}
+
+/* ─── Variants ─────────────────────────────────────── */
+
+.toast[data-variant='success'] {
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.toast[data-variant='success'] .icon {
+  color: var(--ac-accent-mint);
+}
+
+.toast[data-variant='danger'] {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.toast[data-variant='danger'] .icon {
+  color: var(--ac-accent-red);
+}
+
+.toast[data-variant='warning'] {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.toast[data-variant='warning'] .icon {
+  color: var(--ac-accent-amber);
+}
+
+.toast[data-variant='info'] {
+  border-color: rgba(79, 111, 255, 0.3);
+}
+
+.toast[data-variant='info'] .icon {
+  color: var(--ac-accent-blue);
+}

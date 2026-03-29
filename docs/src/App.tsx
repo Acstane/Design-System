@@ -30,6 +30,7 @@ import { ProgressSection } from './sections/ProgressSection';
 import { AccordionSection } from './sections/AccordionSection';
 import { TokensSection } from './sections/TokensSection';
 import { LogoSection } from './sections/LogoSection';
+import { BrandAssetsSection } from './sections/BrandAssets';
 
 /* ─── Nav structure ──────────────────────────────────────── */
 
@@ -86,7 +87,10 @@ const NAV: NavGroup[] = [
   {
     group: 'Brand',
     icon: 'shield' as const,
-    items: [{ id: 'logo', label: 'Logo' }],
+    items: [
+      { id: 'logo', label: 'Logo' },
+      { id: 'brand-assets', label: 'Brand Assets' },
+    ],
   },
   {
     group: 'Customization',
@@ -322,6 +326,7 @@ export function App() {
           <Section id="accordion" title="Accordion" description="Collapsible content sections. Smooth height animation."><AccordionSection /></Section>
           <Section id="tokens" title="Token Swap Guide" description="This design system is token-based. Swap the theme object, every component updates automatically."><TokensSection /></Section>
           <Section id="logo" title="Logo" description="The Acstane mark. Available in light and dark variants."><LogoSection /></Section>
+          <Section id="brand-assets" title="Brand Assets" description="Business card, folder cover, and letterhead templates using the Acstane visual language."><BrandAssetsSection /></Section>
         </div>
       </main>
     </div>

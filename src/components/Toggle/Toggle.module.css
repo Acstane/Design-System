@@ -33,7 +33,7 @@
 .track[data-checked] {
   background: var(--ac-pri-400);
   border-color: var(--ac-pri-400);
-  box-shadow: 0 0 12px rgb(from var(--ac-pri-400) r g b / 0.3);
+  box-shadow: 0 0 12px rgba(163, 56, 255, 0.3);
 }
 
 .thumb {

@@ -28,31 +28,31 @@
 }
 
 .badge[data-variant='primary'] {
-  background: rgb(from var(--ac-pri-400) r g b / 0.12);
+  background: rgba(163, 56, 255, 0.12);
   color: var(--ac-pri-300);
-  border-color: rgb(from var(--ac-pri-400) r g b / 0.25);
+  border-color: rgba(163, 56, 255, 0.25);
 }
 
 .badge[data-variant='success'] {
-  background: rgb(from var(--ac-accent-mint) r g b / 0.1);
+  background: rgba(52, 211, 153, 0.1);
   color: var(--ac-accent-mint);
-  border-color: rgb(from var(--ac-accent-mint) r g b / 0.25);
+  border-color: rgba(52, 211, 153, 0.25);
 }
 
 .badge[data-variant='warning'] {
-  background: rgb(from var(--ac-accent-amber) r g b / 0.1);
+  background: rgba(245, 158, 11, 0.1);
   color: var(--ac-accent-amber);
-  border-color: rgb(from var(--ac-accent-amber) r g b / 0.25);
+  border-color: rgba(245, 158, 11, 0.25);
 }
 
 .badge[data-variant='danger'] {
-  background: rgb(from var(--ac-accent-red) r g b / 0.1);
+  background: rgba(239, 68, 68, 0.1);
   color: var(--ac-accent-red);
-  border-color: rgb(from var(--ac-accent-red) r g b / 0.25);
+  border-color: rgba(239, 68, 68, 0.25);
 }
 
 .badge[data-variant='info'] {
-  background: rgb(from var(--ac-accent-cyan) r g b / 0.1);
+  background: rgba(34, 211, 238, 0.1);
   color: var(--ac-accent-cyan);
-  border-color: rgb(from var(--ac-accent-cyan) r g b / 0.25);
+  border-color: rgba(34, 211, 238, 0.25);
 }

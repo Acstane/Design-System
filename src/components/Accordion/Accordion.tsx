@@ -1,4 +1,4 @@
-import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
+import { forwardRef, useId, type HTMLAttributes, type ReactNode } from 'react';
 import { Icon } from '../Icon';
 import styles from './Accordion.module.css';
 
@@ -18,7 +18,9 @@ export interface AccordionProps extends Omit<HTMLAttributes<HTMLDivElement>, 'on
 
 /** Vertically stacked set of collapsible content sections. */
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ items, value, onChange, className, ...props }, ref) => (
+  ({ items, value, onChange, className, ...props }, ref) => {
+    const baseId = useId();
+    return (
     <div
       ref={ref}
       className={`${styles.accordion} ${className ?? ''}`}
@@ -26,6 +28,8 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     >
       {items.map((item, i) => {
         const open = value === i;
+        const triggerId = `${baseId}-trigger-${i}`;
+        const panelId = `${baseId}-panel-${i}`;
         return (
           <div
             key={i}
@@ -33,11 +37,13 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
             data-last={i === items.length - 1 || undefined}
           >
             <button
+              id={triggerId}
               type="button"
               className={styles.trigger}
               data-open={open || undefined}
               onClick={() => onChange(open ? null : i)}
               aria-expanded={open}
+              aria-controls={panelId}
             >
               <span className={styles.title} data-open={open || undefined}>
                 {item.title}
@@ -49,14 +55,15 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
                 data-open={open || undefined}
               />
             </button>
-            <div className={styles.panel} data-open={open || undefined}>
+            <div id={panelId} className={styles.panel} role="region" aria-labelledby={triggerId} data-open={open || undefined}>
               <div className={styles.content}>{item.content}</div>
             </div>
           </div>
         );
       })}
     </div>
-  ),
+    );
+  },
 );
 
 Accordion.displayName = 'Accordion';

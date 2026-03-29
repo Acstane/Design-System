@@ -35,25 +35,25 @@
 /* Variants */
 
 .alert[data-variant='info'] {
-  background: rgb(from var(--ac-accent-blue) r g b / 0.08);
-  border-color: rgb(from var(--ac-accent-blue) r g b / 0.2);
+  background: rgba(79, 111, 255, 0.08);
+  border-color: rgba(79, 111, 255, 0.2);
   color: var(--ac-accent-blue);
 }
 
 .alert[data-variant='success'] {
-  background: rgb(from var(--ac-accent-mint) r g b / 0.08);
-  border-color: rgb(from var(--ac-accent-mint) r g b / 0.2);
+  background: rgba(52, 211, 153, 0.08);
+  border-color: rgba(52, 211, 153, 0.2);
   color: var(--ac-accent-mint);
 }
 
 .alert[data-variant='warning'] {
-  background: rgb(from var(--ac-accent-amber) r g b / 0.08);
-  border-color: rgb(from var(--ac-accent-amber) r g b / 0.2);
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
   color: var(--ac-accent-amber);
 }
 
 .alert[data-variant='danger'] {
-  background: rgb(from var(--ac-accent-red) r g b / 0.08);
-  border-color: rgb(from var(--ac-accent-red) r g b / 0.2);
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
   color: var(--ac-accent-red);
 }

@@ -1,4 +1,4 @@
-import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes } from 'react';
+import { forwardRef, useState, useEffect, useRef, useCallback, useId, type HTMLAttributes } from 'react';
 import { Icon } from '../Icon';
 import styles from './Select.module.css';
 
@@ -34,6 +34,8 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
   ) => {
     const [open, setOpen] = useState(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const labelId = useId();
+    const listboxId = useId();
 
     const handleOutsideClick = useCallback((e: MouseEvent) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
@@ -64,13 +66,16 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
         data-disabled={disabled ? '' : undefined}
         {...props}
       >
-        {label && <span className={styles.label}>{label}</span>}
+        {label && <span id={labelId} className={styles.label}>{label}</span>}
         <button
           type="button"
           className={styles.trigger}
           data-open={open ? '' : undefined}
           onClick={() => !disabled && setOpen((prev) => !prev)}
           disabled={disabled}
+          aria-expanded={open}
+          aria-haspopup="listbox"
+          aria-labelledby={label ? labelId : undefined}
         >
           <span className={value ? styles.value : styles.placeholder}>
             {value ?? placeholder}
@@ -78,11 +83,13 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
           <Icon name="chevronDown" size={14} color="currentColor" className={styles.chevron} />
         </button>
         {open && (
-          <div className={styles.dropdown}>
+          <div className={styles.dropdown} role="listbox" id={listboxId}>
             {options.map((option) => (
               <div
                 key={option}
                 className={styles.option}
+                role="option"
+                aria-selected={option === value}
                 data-selected={option === value ? '' : undefined}
                 onClick={() => handleSelect(option)}
               >

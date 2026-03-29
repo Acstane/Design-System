@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, type HTMLAttributes, type ReactNode } from 'react';
+import { forwardRef, useEffect, useId, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './Modal.module.css';
 
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
@@ -17,6 +17,7 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 /** Overlay dialog with optional header, scrollable body, and action footer. */
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(
   ({ open, onClose, title, actions, width = 480, className, children, ...props }, ref) => {
+    const titleId = useId();
     useEffect(() => {
       if (!open) return;
       const handler = (e: KeyboardEvent) => {
@@ -32,6 +33,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       <div className={styles.backdrop} onClick={onClose}>
         <div
           ref={ref}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={title ? titleId : undefined}
           className={`${styles.dialog} ${className ?? ''}`}
           style={{
             width: typeof width === 'number' ? `${width}px` : width,
@@ -40,7 +44,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           onClick={(e) => e.stopPropagation()}
           {...props}
         >
-          {title && <div className={styles.header}>{title}</div>}
+          {title && <div id={titleId} className={styles.header}>{title}</div>}
           <div className={styles.body}>{children}</div>
           {actions && <div className={styles.footer}>{actions}</div>}
         </div>

@@ -31,8 +31,10 @@ export { Breadcrumbs, type BreadcrumbsProps } from './components/Breadcrumbs';
 export { Button, type ButtonProps } from './components/Button';
 export { Card, type CardProps } from './components/Card';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
+export { Divider, type DividerProps } from './components/Divider';
 export { Icon, type IconProps, type IconName } from './components/Icon';
 export { Input, type InputProps } from './components/Input';
+export { Kbd, type KbdProps } from './components/Kbd';
 export { Logo, type LogoProps } from './components/Logo';
 export { Modal, type ModalProps } from './components/Modal';
 export { Pagination, type PaginationProps } from './components/Pagination';
@@ -41,5 +43,15 @@ export { Select, type SelectProps } from './components/Select';
 export { Skeleton, type SkeletonProps } from './components/Skeleton';
 export { Table, type TableProps } from './components/Table';
 export { Tabs, type TabsProps } from './components/Tabs';
+export { Textarea, type TextareaProps } from './components/Textarea';
+export {
+  Toast,
+  type ToastProps,
+  type ToastVariant,
+  type ToastData,
+  ToastContainer,
+  type ToastContainerProps,
+  useToast,
+} from './components/Toast';
 export { Toggle, type ToggleProps } from './components/Toggle';
 export { Tooltip, type TooltipProps } from './components/Tooltip';

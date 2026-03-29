@@ -40,7 +40,7 @@
 
 .trigger[data-open] {
   border-color: var(--ac-surface-borderFocus);
-  box-shadow: 0 0 0 3px rgb(from var(--ac-pri-400) r g b / 0.15);
+  box-shadow: 0 0 0 3px rgba(163, 56, 255, 0.15);
 }
 
 .value {
@@ -84,6 +84,6 @@
 }
 
 .option[data-selected] {
-  background: rgb(from var(--ac-pri-400) r g b / 0.08);
+  background: rgba(163, 56, 255, 0.08);
   color: var(--ac-pri-300);
 }
