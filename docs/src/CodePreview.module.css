@@ -1,0 +1,108 @@
+/* ─── CodePreview ─────────────────────────────────────────── */
+
+.container {
+  border: 1px solid var(--ac-surface-border);
+  border-radius: var(--ac-radius-xl);
+  overflow: hidden;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--ac-surface-base);
+  border-bottom: 1px solid var(--ac-surface-border);
+}
+
+.title {
+  font-family: var(--ac-font-mono);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--ac-n-500);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+/* ─── Tabs ───────────────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--ac-radius-md);
+}
+
+.tab {
+  all: unset;
+  cursor: pointer;
+  font-family: var(--ac-font-mono);
+  font-size: 11px;
+  line-height: 1;
+  padding: 5px 10px;
+  border-radius: var(--ac-radius-sm);
+  color: var(--ac-n-500);
+  background: transparent;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--ac-n-300);
+}
+
+.tabActive {
+  background: var(--ac-surface-elevated);
+  color: var(--ac-n-100);
+}
+
+/* ─── Preview area ───────────────────────────────────────── */
+
+.preview {
+  padding: 24px;
+  background: var(--ac-surface-elevated);
+}
+
+/* ─── Code area ──────────────────────────────────────────── */
+
+.codeArea {
+  position: relative;
+  background: var(--ac-surface-base);
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.codeArea pre {
+  font-family: var(--ac-font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ac-n-200);
+  white-space: pre;
+  margin: 0;
+}
+
+/* ─── Copy button ────────────────────────────────────────── */
+
+.copyBtn {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ac-radius-sm);
+  color: var(--ac-n-500);
+  background: transparent;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.copyBtn:hover {
+  color: var(--ac-n-200);
+  background: var(--ac-surface-elevated);
+}

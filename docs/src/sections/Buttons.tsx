@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, Button } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 const variants = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const;
 const sizes = ['lg', 'md', 'sm'] as const;
@@ -37,34 +38,54 @@ export function ButtonsSection() {
     <div>
       {/* Variants x Sizes */}
       <div style={{ marginBottom: 32 }}>
-        <h3 style={subSectionTitle}>Variants &times; Sizes</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {variants.map((variant) => (
-            <div
-              key={variant}
-              style={{ display: 'flex', alignItems: 'center', gap: 12 }}
-            >
-              <span style={variantLabel}>{variant}</span>
-              {sizes.map((size) => (
-                <Button key={size} variant={variant} size={size}>
-                  {sizeLabels[size]}
-                </Button>
-              ))}
-            </div>
-          ))}
-        </div>
+        <CodePreview
+          title="Variants × Sizes"
+          code={`import { Button } from '@acstane/ui';
+
+<Button variant="primary" size="lg">Large</Button>
+<Button variant="secondary" size="md">Medium</Button>
+<Button variant="outline" size="sm">Small</Button>
+<Button variant="ghost" size="md">Ghost</Button>
+<Button variant="danger" size="sm">Danger</Button>`}
+        >
+          <h3 style={subSectionTitle}>Variants &times; Sizes</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {variants.map((variant) => (
+              <div
+                key={variant}
+                style={{ display: 'flex', alignItems: 'center', gap: 12 }}
+              >
+                <span style={variantLabel}>{variant}</span>
+                {sizes.map((size) => (
+                  <Button key={size} variant={variant} size={size}>
+                    {sizeLabels[size]}
+                  </Button>
+                ))}
+              </div>
+            ))}
+          </div>
+        </CodePreview>
       </div>
 
       {/* With Icons */}
       <div style={{ marginBottom: 32 }}>
-        <h3 style={subSectionTitle}>With Icons</h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-          {iconButtons.map(({ icon, label }) => (
-            <Button key={icon} variant="secondary" icon={icon}>
-              {label}
-            </Button>
-          ))}
-        </div>
+        <CodePreview
+          title="With Icons"
+          code={`import { Button } from '@acstane/ui';
+
+<Button variant="secondary" icon="lock">Authenticate</Button>
+<Button variant="secondary" icon="user">Invite User</Button>
+<Button variant="secondary" icon="settings">Settings</Button>`}
+        >
+          <h3 style={subSectionTitle}>With Icons</h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+            {iconButtons.map(({ icon, label }) => (
+              <Button key={icon} variant="secondary" icon={icon}>
+                {label}
+              </Button>
+            ))}
+          </div>
+        </CodePreview>
       </div>
 
       {/* States */}

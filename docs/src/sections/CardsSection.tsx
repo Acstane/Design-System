@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, Card, Button, Badge } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 export function CardsSection() {
   const theme = useTheme();
@@ -24,6 +25,22 @@ export function CardsSection() {
 
   return (
     <div>
+      <CodePreview
+        title="Cards"
+        code={`import { Card, Button } from '@acstane/ui';
+
+<Card
+  title="OIDC Application"
+  actions={
+    <>
+      <Button variant="ghost" size="sm">Edit</Button>
+      <Button variant="primary" size="sm">Configure</Button>
+    </>
+  }
+>
+  <p>Your application description here.</p>
+</Card>`}
+      >
       <div
         style={{
           display: 'grid',
@@ -100,6 +117,7 @@ export function CardsSection() {
           </p>
         </Card>
       </div>
+      </CodePreview>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, Input } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 export function InputsSection() {
   const theme = useTheme();
@@ -16,37 +17,47 @@ export function InputsSection() {
     <div>
       {/* Input Variants */}
       <div style={{ marginBottom: 32 }}>
-        <h3 style={subSectionTitle}>Input Variants</h3>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: 20,
-          }}
+        <CodePreview
+          title="Input Variants"
+          code={`import { Input } from '@acstane/ui';
+
+<Input label="Email Address" placeholder="admin@acstane.io" icon="user" type="email" />
+<Input label="Client Secret" placeholder="sk_live_..." mono />
+<Input label="Redirect URI" error="URI must use HTTPS scheme" />
+<Input label="Application Name" disabled value="Disabled Input" />`}
         >
-          <Input
-            label="Email Address"
-            placeholder="admin@acstane.io"
-            icon="user"
-            type="email"
-          />
-          <Input
-            label="Client Secret"
-            placeholder="sk_live_a1b2c3d4e5f6"
-            mono
-          />
-          <Input
-            label="Redirect URI"
-            placeholder="https://app.example.com/callback"
-            error="URI must use HTTPS scheme"
-          />
-          <Input
-            label="Application Name"
-            placeholder="My Application"
-            disabled
-            value="Disabled Input"
-          />
-        </div>
+          <h3 style={subSectionTitle}>Input Variants</h3>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gap: 20,
+            }}
+          >
+            <Input
+              label="Email Address"
+              placeholder="admin@acstane.io"
+              icon="user"
+              type="email"
+            />
+            <Input
+              label="Client Secret"
+              placeholder="sk_live_a1b2c3d4e5f6"
+              mono
+            />
+            <Input
+              label="Redirect URI"
+              placeholder="https://app.example.com/callback"
+              error="URI must use HTTPS scheme"
+            />
+            <Input
+              label="Application Name"
+              placeholder="My Application"
+              disabled
+              value="Disabled Input"
+            />
+          </div>
+        </CodePreview>
       </div>
 
       {/* Password Input */}

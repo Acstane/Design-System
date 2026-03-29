@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme, Tabs } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 const TAB_ITEMS = ['Overview', 'Users', 'Settings', 'Logs'];
 
@@ -9,29 +10,42 @@ export function TabsSection() {
 
   return (
     <div>
-      <Tabs items={TAB_ITEMS} value={activeTab} onChange={setActiveTab} />
+      <CodePreview
+        title="Tabs"
+        code={`import { Tabs } from '@acstane/ui';
 
-      <div
-        style={{
-          marginTop: 16,
-          padding: 24,
-          backgroundColor: theme.colors.surface.card,
-          border: `1px solid ${theme.colors.surface.border}`,
-          borderRadius: theme.radius.lg,
-          fontSize: 14,
-          color: theme.colors.neutral[200],
-        }}
+const [activeTab, setActiveTab] = useState('Overview');
+
+<Tabs
+  items={['Overview', 'Users', 'Settings', 'Logs']}
+  value={activeTab}
+  onChange={setActiveTab}
+/>`}
       >
-        Active tab:{' '}
-        <span
+        <Tabs items={TAB_ITEMS} value={activeTab} onChange={setActiveTab} />
+
+        <div
           style={{
-            fontWeight: 600,
-            color: theme.colors.primary[400],
+            marginTop: 16,
+            padding: 24,
+            backgroundColor: theme.colors.surface.card,
+            border: `1px solid ${theme.colors.surface.border}`,
+            borderRadius: theme.radius.lg,
+            fontSize: 14,
+            color: theme.colors.neutral[200],
           }}
         >
-          {activeTab}
-        </span>
-      </div>
+          Active tab:{' '}
+          <span
+            style={{
+              fontWeight: 600,
+              color: theme.colors.primary[400],
+            }}
+          >
+            {activeTab}
+          </span>
+        </div>
+      </CodePreview>
     </div>
   );
 }

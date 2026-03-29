@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, ProgressBar, Skeleton } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 export function ProgressSection() {
   const theme = useTheme();
@@ -15,13 +16,25 @@ export function ProgressSection() {
   return (
     <div>
       {/* Progress Bars */}
-      <h3 style={subSectionTitle}>Progress Bars</h3>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 40 }}>
-        <ProgressBar value={75} variant="primary" label="Storage Usage" showValue />
-        <ProgressBar value={45} variant="success" label="Onboarding Progress" showValue />
-        <ProgressBar value={92} variant="warning" label="API Rate Limit" showValue />
-        <ProgressBar value={15} variant="danger" label="Error Rate" showValue />
-      </div>
+      <CodePreview
+        title="Progress Bars"
+        code={`import { ProgressBar } from '@acstane/ui';
+
+<ProgressBar value={75} variant="primary" label="Storage Usage" showValue />
+<ProgressBar value={45} variant="success" label="Onboarding Progress" showValue />
+<ProgressBar value={92} variant="warning" label="API Rate Limit" showValue />
+<ProgressBar value={15} variant="danger" label="Error Rate" showValue />`}
+      >
+        <h3 style={subSectionTitle}>Progress Bars</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <ProgressBar value={75} variant="primary" label="Storage Usage" showValue />
+          <ProgressBar value={45} variant="success" label="Onboarding Progress" showValue />
+          <ProgressBar value={92} variant="warning" label="API Rate Limit" showValue />
+          <ProgressBar value={15} variant="danger" label="Error Rate" showValue />
+        </div>
+      </CodePreview>
+
+      <div style={{ marginBottom: 40 }} />
 
       {/* Skeleton Loaders */}
       <h3 style={subSectionTitle}>Skeleton Loaders</h3>

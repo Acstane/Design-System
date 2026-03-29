@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme, Accordion } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 const FAQ_ITEMS = [
   {
@@ -30,7 +31,21 @@ export function AccordionSection() {
 
   return (
     <div>
-      <Accordion items={FAQ_ITEMS} value={openIndex} onChange={setOpenIndex} />
+      <CodePreview
+        title="Accordion"
+        code={`import { Accordion } from '@acstane/ui';
+
+const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+const items = [
+  { title: 'Question one?', content: 'Answer one.' },
+  { title: 'Question two?', content: 'Answer two.' },
+];
+
+<Accordion items={items} value={openIndex} onChange={setOpenIndex} />`}
+      >
+        <Accordion items={FAQ_ITEMS} value={openIndex} onChange={setOpenIndex} />
+      </CodePreview>
     </div>
   );
 }
