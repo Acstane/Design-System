@@ -346,29 +346,49 @@ export function BrandAssetsSection() {
               boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.1)',
             }}>
               <div id="sig-full">
+                <style dangerouslySetInnerHTML={{ __html: `
+                  @media (prefers-color-scheme: dark) {
+                    .ac-sig-light { display: none !important; }
+                    .ac-sig-dark { display: inline !important; }
+                    .ac-sig-name { color: #f0f0f0 !important; }
+                    .ac-sig-contact { color: #bbb !important; }
+                    .ac-sig-web { color: #888 !important; }
+                    .ac-sig-divider { border-color: #333 !important; }
+                    .ac-sig-tagline { color: #666 !important; border-color: #333 !important; }
+                  }
+                ` }} />
                 <table cellPadding={0} cellSpacing={0} style={{ fontFamily: 'Inter, -apple-system, sans-serif', fontSize: 13, color: '#333' }}>
                   <tbody>
                     <tr>
-                      <td style={{ paddingRight: 20, borderRight: '2px solid #a338ff', verticalAlign: 'top' }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 575 575" width="44" height="44">
-                          <defs><linearGradient id="sg1" x1="100.3" y1="222.78" x2="269.55" y2="125.05" gradientTransform="translate(0 576) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset=".2" stopColor="#a338ff"/><stop offset=".28" stopColor="#a93eff"/><stop offset=".75" stopColor="#ca64ff"/><stop offset="1" stopColor="#d773ff"/></linearGradient></defs>
-                          <path d="M481.52,466.95c-64.72,26.94-139.02-3.69-165.96-68.4L194.16,106.91c64.72-26.94,139.02,3.69,165.96,68.4l121.4,291.64z" fill="#1a0730"/>
-                          <path d="M237.51,412.66c-6.73-16.16-12.23-32.75-17.54-49.39-10.52-34.13-46.72-53.27-80.85-42.75s-53.27,46.72-42.75,80.85c.83,2.71,1.85,5.36,3.03,7.93,2.47,5.6,5.72,10.82,9.65,15.52,34.64,47.29,97.16,64.7,151.26,42.13l-22.8-54.3z" fill="url(#sg1)"/>
-                        </svg>
+                      <td style={{ paddingRight: 20, borderRight: '2px solid #a338ff', verticalAlign: 'top' }} className="ac-sig-divider">
+                        <span className="ac-sig-light">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 575 575" width="44" height="44">
+                            <defs><linearGradient id="sg1" x1="100.3" y1="222.78" x2="269.55" y2="125.05" gradientTransform="translate(0 576) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset=".2" stopColor="#a338ff"/><stop offset=".28" stopColor="#a93eff"/><stop offset=".75" stopColor="#ca64ff"/><stop offset="1" stopColor="#d773ff"/></linearGradient></defs>
+                            <path d="M481.52,466.95c-64.72,26.94-139.02-3.69-165.96-68.4L194.16,106.91c64.72-26.94,139.02,3.69,165.96,68.4l121.4,291.64z" fill="#1a0730"/>
+                            <path d="M237.51,412.66c-6.73-16.16-12.23-32.75-17.54-49.39-10.52-34.13-46.72-53.27-80.85-42.75s-53.27,46.72-42.75,80.85c.83,2.71,1.85,5.36,3.03,7.93,2.47,5.6,5.72,10.82,9.65,15.52,34.64,47.29,97.16,64.7,151.26,42.13l-22.8-54.3z" fill="url(#sg1)"/>
+                          </svg>
+                        </span>
+                        <span className="ac-sig-dark" style={{ display: 'none' }}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 575 575" width="44" height="44">
+                            <defs><linearGradient id="sg2" x1="100.3" y1="222.78" x2="269.55" y2="125.05" gradientTransform="translate(0 576) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset=".2" stopColor="#a338ff"/><stop offset=".28" stopColor="#a93eff"/><stop offset=".75" stopColor="#ca64ff"/><stop offset="1" stopColor="#d773ff"/></linearGradient></defs>
+                            <path d="M481.52,466.95c-64.72,26.94-139.02-3.69-165.96-68.4L194.16,106.91c64.72-26.94,139.02,3.69,165.96,68.4l121.4,291.64z" fill="#ffffff"/>
+                            <path d="M237.51,412.66c-6.73-16.16-12.23-32.75-17.54-49.39-10.52-34.13-46.72-53.27-80.85-42.75s-53.27,46.72-42.75,80.85c.83,2.71,1.85,5.36,3.03,7.93,2.47,5.6,5.72,10.82,9.65,15.52,34.64,47.29,97.16,64.7,151.26,42.13l-22.8-54.3z" fill="url(#sg2)"/>
+                          </svg>
+                        </span>
                       </td>
                       <td style={{ paddingLeft: 16 }}>
-                        <div style={{ fontSize: 15, fontWeight: 700, color: '#111', lineHeight: 1.3 }}>{cardName}</div>
+                        <div className="ac-sig-name" style={{ fontSize: 15, fontWeight: 700, color: '#111', lineHeight: 1.3 }}>{cardName}</div>
                         <div style={{ fontSize: 11, color: '#a338ff', letterSpacing: '0.04em', textTransform: 'uppercase' as const, marginTop: 1, marginBottom: 8 }}>{cardRole}</div>
-                        <div style={{ fontSize: 12, color: '#666', lineHeight: 1.8 }}>
+                        <div className="ac-sig-contact" style={{ fontSize: 12, color: '#666', lineHeight: 1.8 }}>
                           {cardEmail}<br />
                           {cardPhone}<br />
-                          <span style={{ color: '#999' }}>{cardWeb}</span>
+                          <span className="ac-sig-web" style={{ color: '#999' }}>{cardWeb}</span>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td colSpan={2} style={{ paddingTop: 12 }}>
-                        <div style={{ borderTop: '1px solid #eee', paddingTop: 8, fontSize: 10, color: '#bbb', letterSpacing: '0.02em' }}>
+                        <div className="ac-sig-tagline" style={{ borderTop: '1px solid #eee', paddingTop: 8, fontSize: 10, color: '#bbb', letterSpacing: '0.02em' }}>
                           Acstane · The backbone your product is missing.
                         </div>
                       </td>
@@ -409,14 +429,22 @@ export function BrandAssetsSection() {
               boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.1)',
             }}>
               <div id="sig-reply">
+                <style dangerouslySetInnerHTML={{ __html: `
+                  @media (prefers-color-scheme: dark) {
+                    .ac-reply-name { color: #f0f0f0 !important; }
+                    .ac-reply-text { color: #bbb !important; }
+                    .ac-reply-sep { color: #555 !important; }
+                    .ac-reply-web { color: #777 !important; }
+                  }
+                ` }} />
                 <div style={{ fontFamily: 'Inter, -apple-system, sans-serif', fontSize: 12, color: '#555', lineHeight: 1.6 }}>
-                  <span style={{ fontWeight: 600, color: '#111' }}>{cardName}</span>
-                  <span style={{ color: '#ccc' }}> · </span>
+                  <span className="ac-reply-name" style={{ fontWeight: 600, color: '#111' }}>{cardName}</span>
+                  <span className="ac-reply-sep" style={{ color: '#ccc' }}> · </span>
                   <span style={{ color: '#a338ff', fontSize: 11 }}>{cardRole}</span>
-                  <span style={{ color: '#ccc' }}> · </span>
-                  <span>{cardPhone}</span>
-                  <span style={{ color: '#ccc' }}> · </span>
-                  <span style={{ color: '#999' }}>{cardWeb}</span>
+                  <span className="ac-reply-sep" style={{ color: '#ccc' }}> · </span>
+                  <span className="ac-reply-text">{cardPhone}</span>
+                  <span className="ac-reply-sep" style={{ color: '#ccc' }}> · </span>
+                  <span className="ac-reply-web" style={{ color: '#999' }}>{cardWeb}</span>
                 </div>
               </div>
             </div>
