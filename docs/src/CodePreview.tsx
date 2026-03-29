@@ -10,53 +10,121 @@ interface CodePreviewProps {
 
 type Mode = 'preview' | 'code';
 
-/* ─── Basic syntax highlighting ──────────────────────────── */
+interface Token { text: string; type: 'plain' | 'keyword' | 'string' | 'comment' | 'tag' | 'prop' | 'punct' }
 
-function highlightCode(source: string): string {
-  // Escape HTML entities first
-  let html = source
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+const KEYWORDS = new Set([
+  'import', 'from', 'const', 'let', 'var', 'return', 'export',
+  'function', 'type', 'interface', 'default', 'async', 'await',
+  'null', 'true', 'false', 'new', 'typeof', 'number', 'string',
+]);
 
-  // Comments: // single-line and /* multi-line */
-  html = html.replace(
-    /(\/\/.*$)/gm,
-    '<span style="color:var(--ac-n-600)">$1</span>',
-  );
-  html = html.replace(
-    /(\/\*[\s\S]*?\*\/)/g,
-    '<span style="color:var(--ac-n-600)">$1</span>',
-  );
+function tokenize(source: string): Token[] {
+  const tokens: Token[] = [];
+  let i = 0;
 
-  // Strings (single and double quoted)
-  html = html.replace(
-    /(&quot;[^&]*?&quot;|&#39;[^&]*?&#39;|"[^"]*?"|'[^']*?'|`[^`]*?`)/g,
-    '<span style="color:var(--ac-accent-mint)">$1</span>',
-  );
+  while (i < source.length) {
+    // Single-line comment
+    if (source[i] === '/' && source[i + 1] === '/') {
+      const end = source.indexOf('\n', i);
+      const stop = end === -1 ? source.length : end;
+      tokens.push({ text: source.slice(i, stop), type: 'comment' });
+      i = stop;
+      continue;
+    }
 
-  // Keywords
-  html = html.replace(
-    /\b(import|from|const|let|var|return|export|function|type|interface|default|async|await)\b/g,
-    '<span style="color:var(--ac-accent-pink)">$1</span>',
-  );
+    // Multi-line comment
+    if (source[i] === '/' && source[i + 1] === '*') {
+      const end = source.indexOf('*/', i + 2);
+      const stop = end === -1 ? source.length : end + 2;
+      tokens.push({ text: source.slice(i, stop), type: 'comment' });
+      i = stop;
+      continue;
+    }
 
-  // JSX tags: <TagName or </TagName or />
-  html = html.replace(
-    /(&lt;\/?[A-Z][A-Za-z0-9.]*)/g,
-    '<span style="color:var(--ac-pri-300)">$1</span>',
-  );
+    // Strings
+    if (source[i] === "'" || source[i] === '"' || source[i] === '`') {
+      const quote = source[i];
+      let j = i + 1;
+      while (j < source.length && source[j] !== quote) {
+        if (source[j] === '\\') j++;
+        j++;
+      }
+      tokens.push({ text: source.slice(i, j + 1), type: 'string' });
+      i = j + 1;
+      continue;
+    }
 
-  // Props/attributes: word=
-  html = html.replace(
-    /\b([a-zA-Z_][\w-]*)(?==)/g,
-    '<span style="color:var(--ac-accent-cyan)">$1</span>',
-  );
+    // JSX tags: <Component or </Component or <div etc
+    if (source[i] === '<' && /[A-Za-z/]/.test(source[i + 1] || '')) {
+      let j = i;
+      if (source[j + 1] === '/') j++;
+      j++;
+      while (j < source.length && /[A-Za-z0-9.]/.test(source[j])) j++;
+      tokens.push({ text: source.slice(i, j), type: 'tag' });
+      i = j;
+      continue;
+    }
 
-  return html;
+    // Words (identifiers, keywords)
+    if (/[A-Za-z_$]/.test(source[i])) {
+      let j = i;
+      while (j < source.length && /[A-Za-z0-9_$]/.test(source[j])) j++;
+      const word = source.slice(i, j);
+
+      // Check if followed by = (prop)
+      if (source[j] === '=') {
+        tokens.push({ text: word, type: 'prop' });
+      } else if (KEYWORDS.has(word)) {
+        tokens.push({ text: word, type: 'keyword' });
+      } else {
+        tokens.push({ text: word, type: 'plain' });
+      }
+      i = j;
+      continue;
+    }
+
+    // Punctuation and operators
+    if (/[{}()<>[\]=;:,./?|&!+\-*%^~@#]/.test(source[i])) {
+      tokens.push({ text: source[i], type: 'punct' });
+      i++;
+      continue;
+    }
+
+    // Whitespace and other
+    let j = i;
+    while (j < source.length && !/[A-Za-z_$'"` /<{([\])}>=;:,.!+\-*%^~@#|&?\\]/.test(source[j]) && source[j] !== '\n') j++;
+    if (j === i) j = i + 1;
+    tokens.push({ text: source.slice(i, j), type: 'plain' });
+    i = j;
+  }
+
+  return tokens;
 }
 
-/* ─── Component ──────────────────────────────────────────── */
+const TOKEN_COLORS: Record<Token['type'], string> = {
+  plain: 'inherit',
+  keyword: 'var(--ac-accent-pink)',
+  string: 'var(--ac-accent-mint)',
+  comment: 'var(--ac-n-600)',
+  tag: 'var(--ac-pri-300)',
+  prop: 'var(--ac-accent-cyan)',
+  punct: 'var(--ac-n-500)',
+};
+
+function HighlightedCode({ source }: { source: string }) {
+  const tokens = tokenize(source);
+  return (
+    <pre style={{
+      fontFamily: 'var(--ac-font-mono)', fontSize: 12.5, lineHeight: 1.7,
+      color: 'var(--ac-n-200)', whiteSpace: 'pre', margin: 0,
+    }}>
+      {tokens.map((t, i) => (
+        t.type === 'plain' ? t.text :
+        <span key={i} style={{ color: TOKEN_COLORS[t.type] }}>{t.text}</span>
+      ))}
+    </pre>
+  );
+}
 
 export function CodePreview({ children, code, title }: CodePreviewProps) {
   const [mode, setMode] = useState<Mode>('preview');
@@ -71,7 +139,6 @@ export function CodePreview({ children, code, title }: CodePreviewProps) {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
       <div className={styles.header}>
         <span className={styles.title}>{title ?? ''}</span>
         <div className={styles.tabs}>
@@ -92,12 +159,10 @@ export function CodePreview({ children, code, title }: CodePreviewProps) {
         </div>
       </div>
 
-      {/* Preview */}
       {mode === 'preview' && (
         <div className={styles.preview}>{children}</div>
       )}
 
-      {/* Code */}
       {mode === 'code' && (
         <div className={styles.codeArea}>
           <button
@@ -108,7 +173,7 @@ export function CodePreview({ children, code, title }: CodePreviewProps) {
           >
             <Icon name={copied ? 'check' : 'copy'} size={14} />
           </button>
-          <pre dangerouslySetInnerHTML={{ __html: highlightCode(code) }} />
+          <HighlightedCode source={code} />
         </div>
       )}
     </div>
