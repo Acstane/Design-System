@@ -85,7 +85,7 @@ export function GradientsSection() {
                   height: 80,
                   borderRadius: theme.radius.lg,
                   background: g.css,
-                  border: `1px solid ${theme.colors.surface.border}`,
+                  boxShadow: `inset 0 0 0 1px ${theme.colors.surface.border}`,
                 }}
               />
               <div
@@ -123,7 +123,7 @@ export function GradientsSection() {
             background: `linear-gradient(270deg, ${pri[500]}, ${acc.cyan}, ${pri[400]}, ${acc.pink})`,
             backgroundSize: '400% 400%',
             animation: 'acGradientShift 6s ease infinite',
-            border: `1px solid ${theme.colors.surface.border}`,
+            boxShadow: `inset 0 0 0 1px ${theme.colors.surface.border}`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -164,7 +164,7 @@ export function GradientsSection() {
                   height: 120,
                   borderRadius: theme.radius.lg,
                   background: `${g.css}, ${g.bg}`,
-                  border: `1px solid ${theme.colors.surface.border}`,
+                  boxShadow: `inset 0 0 0 1px ${theme.colors.surface.border}`,
                 }}
               />
               <div
