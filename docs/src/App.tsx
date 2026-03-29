@@ -324,9 +324,9 @@ export function App() {
           <Section id="pagination" title="Pagination" description="Page navigation with prev/next and numbered pages."><PaginationSection /></Section>
           <Section id="progress" title="Progress & Skeleton" description="Progress bars for determinate loading. Skeleton loaders for content placeholders."><ProgressSection /></Section>
           <Section id="accordion" title="Accordion" description="Collapsible content sections. Smooth height animation."><AccordionSection /></Section>
-          <Section id="tokens" title="Token Swap Guide" description="This design system is token-based. Swap the theme object, every component updates automatically."><TokensSection /></Section>
           <Section id="logo" title="Logo" description="The Acstane mark. Available in light and dark variants."><LogoSection /></Section>
-          <Section id="brand-assets" title="Brand Assets" description="Business card, folder cover, and letterhead templates using the Acstane visual language."><BrandAssetsSection /></Section>
+          <Section id="brand-assets" title="Brand Assets" description="Business card and email signature templates using the Acstane visual language."><BrandAssetsSection /></Section>
+          <Section id="tokens" title="Token Swap Guide" description="This design system is token-based. Swap the theme object, every component updates automatically."><TokensSection /></Section>
         </div>
       </main>
     </div>
