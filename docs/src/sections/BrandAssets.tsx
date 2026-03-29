@@ -125,25 +125,36 @@ export function BrandAssetsSection() {
               <DownloadBtn targetRef={cardFrontRef} filename="acstane-card-front" />
             </div>
             <div ref={cardFrontRef} style={{
-              width: W, height: H, background: '#ffffff', borderRadius: 8,
+              width: W, height: H, background: '#ffffff',
               position: 'relative', overflow: 'hidden',
-              boxShadow: '0 1px 4px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.1)',
             }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, width: 4, height: '100%', background: pri[400] }} />
-              <div style={{ padding: '36px 36px 32px 40px', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 'auto' }}>
-                  <Logo size={20} dark />
-                  <span style={{ fontSize: 13, fontWeight: 700, color: '#1a1a1a', fontFamily: theme.fonts.body, letterSpacing: '-0.01em' }}>Acstane</span>
+              <div style={{
+                padding: '40px 40px 36px',
+                display: 'flex', flexDirection: 'column', height: '100%',
+              }}>
+                <div style={{ marginBottom: 'auto' }}>
+                  <div style={{
+                    fontSize: 24, fontWeight: 700, color: '#0a0a0a',
+                    fontFamily: theme.fonts.body, letterSpacing: '-0.025em', lineHeight: 1.15,
+                  }}>{cardName}</div>
+                  <div style={{
+                    fontSize: 12, color: '#888', fontFamily: theme.fonts.body,
+                    fontWeight: 500, marginTop: 6,
+                  }}>{cardRole}</div>
                 </div>
-                <div>
-                  <div style={{ fontSize: 20, fontWeight: 700, color: '#111', fontFamily: theme.fonts.body, letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: 4 }}>{cardName}</div>
-                  <div style={{ fontSize: 11, color: pri[500], fontFamily: theme.fonts.mono, letterSpacing: '0.04em', textTransform: 'uppercase' as const, marginBottom: 20 }}>{cardRole}</div>
-                  <div style={{ display: 'flex', gap: 24, fontSize: 11.5, color: '#555', fontFamily: theme.fonts.body }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                      <span>{cardEmail}</span>
-                      <span>{cardPhone}</span>
-                    </div>
-                    <div><span style={{ fontFamily: theme.fonts.mono, color: '#999' }}>{cardWeb}</span></div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                  <div style={{ fontSize: 11.5, color: '#666', fontFamily: theme.fonts.body, lineHeight: 1.9 }}>
+                    {cardEmail}<br />
+                    {cardPhone}<br />
+                    <span style={{ color: '#aaa', fontFamily: theme.fonts.mono, fontSize: 11 }}>{cardWeb}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Logo size={22} dark />
+                    <span style={{
+                      fontSize: 14, fontWeight: 700, color: '#0a0a0a',
+                      fontFamily: theme.fonts.body, letterSpacing: '-0.02em',
+                    }}>Acstane</span>
                   </div>
                 </div>
               </div>
@@ -157,19 +168,12 @@ export function BrandAssetsSection() {
               <DownloadBtn targetRef={cardBackRef} filename="acstane-card-back" />
             </div>
             <div ref={cardBackRef} style={{
-              width: W, height: H, background: '#0e0e12', borderRadius: 8,
+              width: W, height: H, background: '#0a0a0e',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               position: 'relative', overflow: 'hidden',
-              boxShadow: '0 1px 4px rgba(0,0,0,0.15), 0 16px 48px rgba(0,0,0,0.25)',
             }}>
-              <div style={{
-                position: 'absolute', bottom: '-30%', left: '50%', transform: 'translateX(-50%)',
-                width: 300, height: 200, borderRadius: '50%',
-                background: pri[400], opacity: 0.04, filter: 'blur(60px)',
-              }} />
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, position: 'relative' }}>
-                <div style={{ color: '#fff' }}><Logo size={48} /></div>
-                <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', fontFamily: theme.fonts.display, letterSpacing: '-0.03em' }}>Acstane</div>
+              <div style={{ color: '#fff', position: 'relative' }}>
+                <Logo size={56} />
               </div>
             </div>
           </div>
