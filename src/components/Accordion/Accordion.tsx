@@ -1,6 +1,6 @@
 import { forwardRef, useId, type HTMLAttributes, type ReactNode } from 'react';
 import { Icon } from '../Icon';
-import styles from './Accordion.module.css';
+import './Accordion.css';
 
 export interface AccordionItem {
   title: string;
@@ -23,7 +23,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     return (
     <div
       ref={ref}
-      className={`${styles.accordion} ${className ?? ''}`}
+      className={`ac-accordion-accordion ${className ?? ''}`}
       {...props}
     >
       {items.map((item, i) => {
@@ -33,30 +33,30 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
         return (
           <div
             key={i}
-            className={styles.item}
+            className="ac-accordion-item"
             data-last={i === items.length - 1 || undefined}
           >
             <button
               id={triggerId}
               type="button"
-              className={styles.trigger}
+              className="ac-accordion-trigger"
               data-open={open || undefined}
               onClick={() => onChange(open ? null : i)}
               aria-expanded={open}
               aria-controls={panelId}
             >
-              <span className={styles.title} data-open={open || undefined}>
+              <span className="ac-accordion-title" data-open={open || undefined}>
                 {item.title}
               </span>
               <Icon
                 name="chevronDown"
                 size={16}
-                className={styles.chevron}
+                className="ac-accordion-chevron"
                 data-open={open || undefined}
               />
             </button>
-            <div id={panelId} className={styles.panel} role="region" aria-labelledby={triggerId} data-open={open || undefined}>
-              <div className={styles.content}>{item.content}</div>
+            <div id={panelId} className="ac-accordion-panel" role="region" aria-labelledby={triggerId} data-open={open || undefined}>
+              <div className="ac-accordion-content">{item.content}</div>
             </div>
           </div>
         );

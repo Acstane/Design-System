@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes, useMemo } from 'react';
-import styles from './Pagination.module.css';
+import './Pagination.css';
 
 export interface PaginationProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Current active page (1-indexed). */
@@ -54,9 +54,9 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
     const pages = useMemo(() => buildPages(page, total, siblings), [page, total, siblings]);
 
     return (
-      <div ref={ref} className={`${styles.root} ${className ?? ''}`} {...props}>
+      <div ref={ref} className={`ac-pagination-root ${className ?? ''}`} {...props}>
         <button
-          className={styles.nav}
+          className="ac-pagination-nav"
           disabled={page <= 1}
           onClick={() => onChange(page - 1)}
         >
@@ -65,13 +65,13 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
 
         {pages.map((item, i) =>
           item === 'ellipsis' ? (
-            <span key={`ellipsis-${i}`} className={styles.ellipsis}>
+            <span key={`ellipsis-${i}`} className="ac-pagination-ellipsis">
               ...
             </span>
           ) : (
             <button
               key={item}
-              className={styles.page}
+              className="ac-pagination-page"
               data-active={item === page || undefined}
               onClick={() => onChange(item)}
             >
@@ -81,7 +81,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
         )}
 
         <button
-          className={styles.nav}
+          className="ac-pagination-nav"
           disabled={page >= total}
           onClick={() => onChange(page + 1)}
         >

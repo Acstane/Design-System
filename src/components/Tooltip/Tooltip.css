@@ -1,9 +1,9 @@
-.wrapper {
+.ac-tooltip-wrapper {
   position: relative;
   display: inline-flex;
 }
 
-.bubble {
+.ac-tooltip-bubble {
   position: absolute;
   background: var(--ac-n-800);
   color: var(--ac-n-100);
@@ -18,25 +18,25 @@
   pointer-events: none;
 }
 
-.bubble[data-position='top'] {
+.ac-tooltip-bubble[data-position='top'] {
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
 }
 
-.bubble[data-position='bottom'] {
+.ac-tooltip-bubble[data-position='bottom'] {
   top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
 }
 
-.bubble[data-position='left'] {
+.ac-tooltip-bubble[data-position='left'] {
   right: calc(100% + 8px);
   top: 50%;
   transform: translateY(-50%);
 }
 
-.bubble[data-position='right'] {
+.ac-tooltip-bubble[data-position='right'] {
   left: calc(100% + 8px);
   top: 50%;
   transform: translateY(-50%);

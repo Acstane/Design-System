@@ -1,4 +1,4 @@
-.container {
+.ac-tabs-container {
   display: flex;
   flex-direction: row;
   gap: 2px;
@@ -8,7 +8,7 @@
   border: 1px solid var(--ac-surface-border);
 }
 
-.tab {
+.ac-tabs-tab {
   padding: 7px 14px;
   font-family: var(--ac-font-body);
   font-size: 13px;
@@ -22,7 +22,7 @@
   line-height: 1;
 }
 
-.tab[data-active] {
+.ac-tabs-tab[data-active] {
   background: var(--ac-surface-elevated);
   color: var(--ac-n-100);
   font-weight: 600;

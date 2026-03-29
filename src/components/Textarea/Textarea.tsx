@@ -1,5 +1,5 @@
 import { forwardRef, type TextareaHTMLAttributes } from 'react';
-import styles from './Textarea.module.css';
+import './Textarea.css';
 
 export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   /** Visible label rendered above the textarea */
@@ -18,18 +18,18 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const message = error || hint;
 
     return (
-      <div className={`${styles.wrapper} ${className ?? ''}`}>
-        {label && <label className={styles.label}>{label}</label>}
+      <div className={`ac-textarea-wrapper ${className ?? ''}`}>
+        {label && <label className="ac-textarea-label">{label}</label>}
         <textarea
           ref={ref}
-          className={styles.textarea}
+          className="ac-textarea-textarea"
           data-mono={mono ? '' : undefined}
           data-error={error ? '' : undefined}
           disabled={disabled}
           {...props}
         />
         {message && (
-          <span className={styles.message} data-error={error ? '' : undefined}>
+          <span className="ac-textarea-message" data-error={error ? '' : undefined}>
             {message}
           </span>
         )}

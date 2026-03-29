@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import styles from './Table.module.css';
+import './Table.css';
 
 export interface TableColumn<T extends Record<string, unknown>> {
   key: keyof T & string;
@@ -34,16 +34,16 @@ function TableInner<T extends Record<string, unknown>>({
 }: TableProps<T>) {
   return (
     <div
-      className={`${styles.container} ${className ?? ''}`}
+      className={`ac-table-container ${className ?? ''}`}
       {...props}
     >
-      <table className={styles.table} data-compact={compact || undefined}>
-        <thead className={styles.thead}>
+      <table className="ac-table-table" data-compact={compact || undefined}>
+        <thead className="ac-table-thead">
           <tr>
             {columns.map((col) => (
               <th
                 key={col.key}
-                className={styles.th}
+                className="ac-table-th"
                 style={col.width != null ? { width: col.width } : undefined}
               >
                 {col.header}
@@ -55,13 +55,13 @@ function TableInner<T extends Record<string, unknown>>({
           {data.map((row, i) => (
             <tr
               key={i}
-              className={styles.row}
+              className="ac-table-row"
               data-striped={striped || undefined}
               data-clickable={onRowClick ? true : undefined}
               onClick={onRowClick ? () => onRowClick(row) : undefined}
             >
               {columns.map((col) => (
-                <td key={col.key} className={styles.td}>
+                <td key={col.key} className="ac-table-td">
                   {col.render ? col.render(row[col.key], row) : String(row[col.key] ?? '')}
                 </td>
               ))}

@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './Avatar.module.css';
+import './Avatar.css';
 
 export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   /** Full name used to derive initials and a deterministic background color. */
@@ -44,19 +44,19 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className ?? ''}`}
+        className={`ac-avatar-root ${className ?? ''}`}
         style={{ width: size, height: size, ...style }}
         {...props}
       >
         <div
-          className={styles.circle}
+          className="ac-avatar-circle"
           style={{ backgroundColor: src ? undefined : getBgColor(name) }}
         >
           {src ? (
-            <img className={styles.image} src={src} alt={name} />
+            <img className="ac-avatar-image" src={src} alt={name} />
           ) : (
             <span
-              className={styles.initials}
+              className="ac-avatar-initials"
               style={{ fontSize: size * 0.38, fontWeight: 600 }}
             >
               {getInitials(name)}
@@ -65,7 +65,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         </div>
         {status && (
           <span
-            className={styles.status}
+            className="ac-avatar-status"
             data-status={status}
             style={{ width: statusSize, height: statusSize }}
           />

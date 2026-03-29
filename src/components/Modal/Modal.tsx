@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useId, type HTMLAttributes, type ReactNode } from 'react';
-import styles from './Modal.module.css';
+import './Modal.css';
 
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   /** Controls whether the modal is visible. */
@@ -30,13 +30,13 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
     if (!open) return null;
 
     return (
-      <div className={styles.backdrop} onClick={onClose}>
+      <div className="ac-modal-backdrop" onClick={onClose}>
         <div
           ref={ref}
           role="dialog"
           aria-modal="true"
           aria-labelledby={title ? titleId : undefined}
-          className={`${styles.dialog} ${className ?? ''}`}
+          className={`ac-modal-dialog ${className ?? ''}`}
           style={{
             width: typeof width === 'number' ? `${width}px` : width,
             animation: 'acFadeInScale 0.2s ease-out',
@@ -44,9 +44,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           onClick={(e) => e.stopPropagation()}
           {...props}
         >
-          {title && <div id={titleId} className={styles.header}>{title}</div>}
-          <div className={styles.body}>{children}</div>
-          {actions && <div className={styles.footer}>{actions}</div>}
+          {title && <div id={titleId} className="ac-modal-header">{title}</div>}
+          <div className="ac-modal-body">{children}</div>
+          {actions && <div className="ac-modal-footer">{actions}</div>}
         </div>
       </div>
     );

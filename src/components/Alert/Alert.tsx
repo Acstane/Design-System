@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes } from 'react';
 import { Icon } from '../Icon';
 import type { IconName } from '../Icon';
-import styles from './Alert.module.css';
+import './Alert.css';
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   /** Visual style variant */
@@ -22,15 +22,15 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   ({ variant = 'info', title, className, children, ...props }, ref) => (
     <div
       ref={ref}
-      className={`${styles.alert} ${className ?? ''}`}
+      className={`ac-alert-alert ${className ?? ''}`}
       data-variant={variant}
       role="alert"
       {...props}
     >
-      <Icon name={variantIcon[variant]} size={18} color="currentColor" className={styles.icon} />
-      <div className={styles.content}>
-        {title && <div className={styles.title}>{title}</div>}
-        <div className={styles.body}>{children}</div>
+      <Icon name={variantIcon[variant]} size={18} color="currentColor" className="ac-alert-icon" />
+      <div className="ac-alert-content">
+        {title && <div className="ac-alert-title">{title}</div>}
+        <div className="ac-alert-body">{children}</div>
       </div>
     </div>
   ),

@@ -1,7 +1,7 @@
 import { forwardRef, type InputHTMLAttributes } from 'react';
 import { Icon } from '../Icon';
 import type { IconName } from '../Icon';
-import styles from './Input.module.css';
+import './Input.css';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** Visible label rendered above the input */
@@ -27,15 +27,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const message = error || hint;
 
     return (
-      <div className={`${styles.wrapper} ${className ?? ''}`}>
-        {label && <label className={styles.label}>{label}</label>}
-        <div className={styles.field}>
+      <div className={`ac-input-wrapper ${className ?? ''}`}>
+        {label && <label className="ac-input-label">{label}</label>}
+        <div className="ac-input-field">
           {icon && (
-            <Icon name={icon} size={14} color="currentColor" className={styles.icon} />
+            <Icon name={icon} size={14} color="currentColor" className="ac-input-icon" />
           )}
           <input
             ref={ref}
-            className={styles.input}
+            className="ac-input-input"
             data-size={inputSize}
             data-has-icon={icon ? '' : undefined}
             data-mono={mono ? '' : undefined}
@@ -45,7 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           />
         </div>
         {message && (
-          <span className={styles.message} data-error={error ? '' : undefined}>
+          <span className="ac-input-message" data-error={error ? '' : undefined}>
             {message}
           </span>
         )}

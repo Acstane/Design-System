@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './Kbd.module.css';
+import './Kbd.css';
 
 export interface KbdProps extends HTMLAttributes<HTMLElement> {
   /** Array of key labels to render (e.g. ['⌘', 'K']) */
@@ -9,11 +9,11 @@ export interface KbdProps extends HTMLAttributes<HTMLElement> {
 /** Renders a row of keyboard shortcut keys separated by "+" signs. */
 export const Kbd = forwardRef<HTMLElement, KbdProps>(
   ({ keys, className, ...props }, ref) => (
-    <span ref={ref} className={`${styles.row} ${className ?? ''}`} {...props}>
+    <span ref={ref} className={`ac-kbd-row ${className ?? ''}`} {...props}>
       {keys.map((key, i) => (
-        <span key={i} className={styles.group}>
-          {i > 0 && <span className={styles.separator}>+</span>}
-          <kbd className={styles.key}>{key}</kbd>
+        <span key={i} className="ac-kbd-group">
+          {i > 0 && <span className="ac-kbd-separator">+</span>}
+          <kbd className="ac-kbd-key">{key}</kbd>
         </span>
       ))}
     </span>

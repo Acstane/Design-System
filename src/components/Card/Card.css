@@ -1,4 +1,4 @@
-.card {
+.ac-card-card {
   background: var(--ac-surface-elevated);
   border: 1px solid var(--ac-surface-border);
   border-radius: var(--ac-radius-xl);
@@ -6,16 +6,16 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.card[data-subtle] {
+.ac-card-card[data-subtle] {
   padding: 16px;
 }
 
-.card:hover {
+.ac-card-card:hover {
   border-color: var(--ac-surface-borderHover);
   box-shadow: var(--ac-shadow-md);
 }
 
-.title {
+.ac-card-title {
   font-family: var(--ac-font-body);
   font-size: 15px;
   font-weight: 600;
@@ -24,14 +24,14 @@
   margin-bottom: 12px;
 }
 
-.body {
+.ac-card-body {
   font-family: var(--ac-font-body);
   font-size: 13.5px;
   color: var(--ac-n-400);
   line-height: 1.6;
 }
 
-.actions {
+.ac-card-actions {
   display: flex;
   flex-direction: row;
   gap: 8px;

@@ -1,5 +1,5 @@
 import { forwardRef, useState, useCallback, useRef, useEffect, type HTMLAttributes } from 'react';
-import styles from './Toast.module.css';
+import './Toast.css';
 
 /* ─── Types ───────────────────────────────────────────── */
 
@@ -62,18 +62,18 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   ({ variant, title, message, onDismiss, className, style, ...props }, ref) => (
     <div
       ref={ref}
-      className={`${styles.toast} ${className ?? ''}`}
+      className={`ac-toast-toast ${className ?? ''}`}
       data-variant={variant}
       style={{ animation: 'acFadeInScale 0.25s ease-out', ...style }}
       role="status"
       {...props}
     >
-      <span className={styles.icon}>{icons[variant]}</span>
-      <div className={styles.content}>
-        {title && <span className={styles.title}>{title}</span>}
-        <span className={styles.message}>{message}</span>
+      <span className="ac-toast-icon">{icons[variant]}</span>
+      <div className="ac-toast-content">
+        {title && <span className="ac-toast-title">{title}</span>}
+        <span className="ac-toast-message">{message}</span>
       </div>
-      <button type="button" className={styles.close} onClick={onDismiss} aria-label="Dismiss">
+      <button type="button" className="ac-toast-close" onClick={onDismiss} aria-label="Dismiss">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
@@ -88,9 +88,9 @@ Toast.displayName = 'Toast';
 
 /** Fixed container that renders a stack of toasts in the top-right corner. */
 export const ToastContainer = ({ toasts, onDismiss }: ToastContainerProps) => (
-  <div className={styles.container}>
+  <div className="ac-toast-container">
     {toasts.map((t) => (
-      <div key={t.id} className={styles.item}>
+      <div key={t.id} className="ac-toast-item">
         <Toast variant={t.variant} title={t.title} message={t.message} onDismiss={() => onDismiss(t.id)} />
       </div>
     ))}

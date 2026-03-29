@@ -1,7 +1,7 @@
 import { forwardRef, type ButtonHTMLAttributes } from 'react';
 import { Icon } from '../Icon';
 import type { IconName } from '../Icon';
-import styles from './Button.module.css';
+import './Button.css';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Visual style variant */
@@ -19,7 +19,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', size = 'md', icon, className, children, ...props }, ref) => (
     <button
       ref={ref}
-      className={`${styles.button} ${className ?? ''}`}
+      className={`ac-btn-button ${className ?? ''}`}
       data-variant={variant}
       data-size={size}
       {...props}

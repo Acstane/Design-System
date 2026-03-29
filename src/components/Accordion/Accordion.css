@@ -1,18 +1,18 @@
-.accordion {
+.ac-accordion-accordion {
   border-radius: var(--ac-radius-xl);
   border: 1px solid var(--ac-surface-border);
   overflow: hidden;
 }
 
-.item {
+.ac-accordion-item {
   border-bottom: 1px solid var(--ac-surface-border);
 }
 
-.item[data-last] {
+.ac-accordion-item[data-last] {
   border-bottom: none;
 }
 
-.trigger {
+.ac-accordion-trigger {
   width: 100%;
   display: flex;
   align-items: center;
@@ -25,44 +25,44 @@
   transition: background 0.2s;
 }
 
-.trigger[data-open] {
+.ac-accordion-trigger[data-open] {
   background: var(--ac-surface-elevated);
 }
 
-.title {
+.ac-accordion-title {
   font-family: var(--ac-font-body);
   font-size: 14px;
   font-weight: 550;
   color: var(--ac-n-300);
 }
 
-.title[data-open] {
+.ac-accordion-title[data-open] {
   color: var(--ac-n-100);
 }
 
-.chevron {
+.ac-accordion-chevron {
   color: var(--ac-n-500);
   transition: transform 0.25s;
   flex-shrink: 0;
 }
 
-.chevron[data-open] {
+.ac-accordion-chevron[data-open] {
   transform: rotate(180deg);
 }
 
-.panel {
+.ac-accordion-panel {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
   transition: max-height 0.35s ease, opacity 0.25s;
 }
 
-.panel[data-open] {
+.ac-accordion-panel[data-open] {
   max-height: 300px;
   opacity: 1;
 }
 
-.content {
+.ac-accordion-content {
   padding: 0 18px 16px;
   font-family: var(--ac-font-body);
   font-size: 13.5px;

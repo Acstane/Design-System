@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './Divider.module.css';
+import './Divider.css';
 
 export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
   /** Centered text label */
@@ -15,7 +15,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
   ({ label, variant = 'solid', orientation = 'horizontal', className, ...props }, ref) => (
     <div
       ref={ref}
-      className={`${styles.divider} ${className ?? ''}`}
+      className={`ac-divider-divider ${className ?? ''}`}
       data-variant={variant}
       data-orientation={orientation}
       data-has-label={label ? '' : undefined}
@@ -25,9 +25,9 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
     >
       {label && orientation === 'horizontal' ? (
         <>
-          <span className={styles.line} data-variant={variant} />
-          <span className={styles.label}>{label}</span>
-          <span className={styles.line} data-variant={variant} />
+          <span className="ac-divider-line" data-variant={variant} />
+          <span className="ac-divider-label">{label}</span>
+          <span className="ac-divider-line" data-variant={variant} />
         </>
       ) : null}
     </div>

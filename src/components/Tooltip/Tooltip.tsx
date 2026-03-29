@@ -1,5 +1,5 @@
 import { forwardRef, useState, type HTMLAttributes } from 'react';
-import styles from './Tooltip.module.css';
+import './Tooltip.css';
 
 export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   /** Text displayed inside the tooltip bubble. */
@@ -16,7 +16,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.wrapper} ${className ?? ''}`}
+        className={`ac-tooltip-wrapper ${className ?? ''}`}
         onMouseEnter={(e) => {
           setShow(true);
           onMouseEnter?.(e);
@@ -29,7 +29,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       >
         {children}
         {show && (
-          <span className={styles.bubble} data-position={position}>
+          <span className="ac-tooltip-bubble" data-position={position}>
             {label}
           </span>
         )}

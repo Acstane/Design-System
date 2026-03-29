@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './Tabs.module.css';
+import './Tabs.css';
 
 export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Tab labels. */
@@ -13,12 +13,12 @@ export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChang
 /** Controlled tab bar for switching between views. */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   ({ items, value, onChange, className, ...props }, ref) => (
-    <div ref={ref} className={`${styles.container} ${className ?? ''}`} role="tablist" {...props}>
+    <div ref={ref} className={`ac-tabs-container ${className ?? ''}`} role="tablist" {...props}>
       {items.map((item) => (
         <button
           key={item}
           type="button"
-          className={styles.tab}
+          className="ac-tabs-tab"
           role="tab"
           aria-selected={item === value}
           tabIndex={item === value ? 0 : -1}

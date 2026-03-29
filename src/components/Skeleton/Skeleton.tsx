@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './Skeleton.module.css';
+import './Skeleton.css';
 
 export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   /** Width of the skeleton element. */
@@ -15,7 +15,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
   ({ width = '100%', height = 16, radius = 8, className, style, ...props }, ref) => (
     <div
       ref={ref}
-      className={`${styles.skeleton} ${className ?? ''}`}
+      className={`ac-skeleton-skeleton ${className ?? ''}`}
       style={{
         width: typeof width === 'number' ? `${width}px` : width,
         height: typeof height === 'number' ? `${height}px` : height,

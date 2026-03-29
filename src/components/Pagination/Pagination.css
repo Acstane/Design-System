@@ -1,11 +1,11 @@
-.root {
+.ac-pagination-root {
   display: flex;
   flex-direction: row;
   gap: 4px;
   align-items: center;
 }
 
-.nav {
+.ac-pagination-nav {
   padding: 6px 10px;
   font-family: var(--ac-font-body);
   font-size: 12px;
@@ -17,18 +17,18 @@
   transition: all 0.15s;
 }
 
-.nav:hover:not(:disabled) {
+.ac-pagination-nav:hover:not(:disabled) {
   border-color: var(--ac-surface-borderHover);
   color: var(--ac-n-200);
 }
 
-.nav:disabled {
+.ac-pagination-nav:disabled {
   opacity: 0.35;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.page {
+.ac-pagination-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -44,19 +44,19 @@
   transition: all 0.15s;
 }
 
-.page:hover:not([data-active]) {
+.ac-pagination-page:hover:not([data-active]) {
   border-color: var(--ac-surface-borderHover);
   color: var(--ac-n-200);
 }
 
-.page[data-active] {
+.ac-pagination-page[data-active] {
   border-color: var(--ac-pri-400);
   background: rgba(163, 56, 255, 0.15);
   color: var(--ac-pri-300);
   font-weight: 600;
 }
 
-.ellipsis {
+.ac-pagination-ellipsis {
   display: inline-flex;
   align-items: center;
   justify-content: center;

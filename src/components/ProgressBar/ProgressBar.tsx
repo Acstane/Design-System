@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './ProgressBar.module.css';
+import './ProgressBar.css';
 
 export interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   /** Current progress value from 0 to 100. */
@@ -18,16 +18,16 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     const clamped = Math.max(0, Math.min(100, value));
 
     return (
-      <div ref={ref} className={`${styles.root} ${className ?? ''}`} {...props}>
+      <div ref={ref} className={`ac-progress-root ${className ?? ''}`} {...props}>
         {(label || showValue) && (
-          <div className={styles.labelRow}>
-            {label && <span className={styles.label}>{label}</span>}
-            {showValue && <span className={styles.value}>{Math.round(clamped)}%</span>}
+          <div className="ac-progress-labelRow">
+            {label && <span className="ac-progress-label">{label}</span>}
+            {showValue && <span className="ac-progress-value">{Math.round(clamped)}%</span>}
           </div>
         )}
-        <div className={styles.track}>
+        <div className="ac-progress-track">
           <div
-            className={styles.fill}
+            className="ac-progress-fill"
             data-variant={variant}
             style={{ width: `${clamped}%` }}
           />

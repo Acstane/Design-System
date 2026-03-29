@@ -1,8 +1,8 @@
-.nav {
+.ac-breadcrumbs-nav {
   display: inline-flex;
 }
 
-.list {
+.ac-breadcrumbs-list {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -12,24 +12,24 @@
   padding: 0;
 }
 
-.item {
+.ac-breadcrumbs-item {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.link {
+.ac-breadcrumbs-link {
   font-family: var(--ac-font-body);
   font-size: 13px;
   color: var(--ac-n-400);
   cursor: pointer;
 }
 
-.link:hover {
+.ac-breadcrumbs-link:hover {
   color: var(--ac-n-200);
 }
 
-.current {
+.ac-breadcrumbs-current {
   font-family: var(--ac-font-body);
   font-size: 13px;
   font-weight: 600;

@@ -1,16 +1,16 @@
-.row {
+.ac-kbd-row {
   display: inline-flex;
   align-items: center;
   gap: 0;
   font-family: var(--ac-font-mono);
 }
 
-.group {
+.ac-kbd-group {
   display: inline-flex;
   align-items: center;
 }
 
-.key {
+.ac-kbd-key {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +29,7 @@
   line-height: 1;
 }
 
-.separator {
+.ac-kbd-separator {
   display: inline-flex;
   align-items: center;
   justify-content: center;

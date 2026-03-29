@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './Toggle.module.css';
+import './Toggle.css';
 
 export interface ToggleProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Optional label rendered beside the toggle */
@@ -19,7 +19,7 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
   ({ label, checked, onChange, size = 'md', disabled, className, ...props }, ref) => (
     <div
       ref={ref}
-      className={`${styles.wrapper} ${className ?? ''}`}
+      className={`ac-toggle-wrapper ${className ?? ''}`}
       data-disabled={disabled ? '' : undefined}
       onClick={() => !disabled && onChange(!checked)}
       role="switch"
@@ -27,13 +27,13 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
       {...props}
     >
       <div
-        className={styles.track}
+        className="ac-toggle-track"
         data-size={size}
         data-checked={checked ? '' : undefined}
       >
-        <div className={styles.thumb} />
+        <div className="ac-toggle-thumb" />
       </div>
-      {label && <span className={styles.label}>{label}</span>}
+      {label && <span className="ac-toggle-label">{label}</span>}
     </div>
   ),
 );

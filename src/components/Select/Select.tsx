@@ -1,6 +1,6 @@
 import { forwardRef, useState, useEffect, useRef, useCallback, useId, type HTMLAttributes } from 'react';
 import { Icon } from '../Icon';
-import styles from './Select.module.css';
+import './Select.css';
 
 export interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Visible label rendered above the select */
@@ -62,14 +62,14 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
           if (typeof ref === 'function') ref(node);
           else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
-        className={`${styles.wrapper} ${className ?? ''}`}
+        className={`ac-select-wrapper ${className ?? ''}`}
         data-disabled={disabled ? '' : undefined}
         {...props}
       >
-        {label && <span id={labelId} className={styles.label}>{label}</span>}
+        {label && <span id={labelId} className="ac-select-label">{label}</span>}
         <button
           type="button"
-          className={styles.trigger}
+          className="ac-select-trigger"
           data-open={open ? '' : undefined}
           onClick={() => !disabled && setOpen((prev) => !prev)}
           disabled={disabled}
@@ -77,17 +77,17 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
           aria-haspopup="listbox"
           aria-labelledby={label ? labelId : undefined}
         >
-          <span className={value ? styles.value : styles.placeholder}>
+          <span className={value ? 'ac-select-value' : 'ac-select-placeholder'}>
             {value ?? placeholder}
           </span>
-          <Icon name="chevronDown" size={14} color="currentColor" className={styles.chevron} />
+          <Icon name="chevronDown" size={14} color="currentColor" className="ac-select-chevron" />
         </button>
         {open && (
-          <div className={styles.dropdown} role="listbox" id={listboxId}>
+          <div className="ac-select-dropdown" role="listbox" id={listboxId}>
             {options.map((option) => (
               <div
                 key={option}
-                className={styles.option}
+                className="ac-select-option"
                 role="option"
                 aria-selected={option === value}
                 data-selected={option === value ? '' : undefined}

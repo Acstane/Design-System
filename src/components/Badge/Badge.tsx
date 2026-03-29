@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
-import styles from './Badge.module.css';
+import './Badge.css';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   /** Visual style variant */
@@ -13,11 +13,11 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   ({ variant = 'default', dot, className, children, ...props }, ref) => (
     <span
       ref={ref}
-      className={`${styles.badge} ${className ?? ''}`}
+      className={`ac-badge-badge ${className ?? ''}`}
       data-variant={variant}
       {...props}
     >
-      {dot && <span className={styles.dot} />}
+      {dot && <span className="ac-badge-dot" />}
       {children}
     </span>
   ),
