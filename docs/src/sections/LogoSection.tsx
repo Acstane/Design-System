@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, Logo } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 const LOGO_SIZES = [64, 48, 36, 28, 20];
 
@@ -16,6 +17,13 @@ export function LogoSection() {
 
   return (
     <div>
+      <CodePreview
+        title="Logo"
+        code={`import { Logo } from '@acstane/ui';
+
+<Logo size={48} />
+<Logo size={48} dark />`}
+      >
       {/* Logo Mark -- light on dark */}
       <h3 style={subSectionTitle}>Logo Mark (light on dark)</h3>
       <div
@@ -134,6 +142,7 @@ export function LogoSection() {
           </span>
         </div>
       </div>
+      </CodePreview>
     </div>
   );
 }

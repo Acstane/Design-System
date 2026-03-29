@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, Table, Badge } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 interface AppRow {
   name: string;
@@ -33,6 +34,20 @@ export function TablesSection() {
 
   return (
     <div>
+      <CodePreview
+        title="Table"
+        code={`import { Table } from '@acstane/ui';
+
+<Table
+  data={apps}
+  columns={[
+    { key: 'name', header: 'Name' },
+    { key: 'type', header: 'Type' },
+    { key: 'status', header: 'Status', render: (v) => <Badge>{v}</Badge> },
+  ]}
+  striped
+/>`}
+      >
       <Table<AppRow>
         striped
         data={data}
@@ -60,6 +75,7 @@ export function TablesSection() {
         ]}
         onRowClick={() => {}}
       />
+      </CodePreview>
     </div>
   );
 }

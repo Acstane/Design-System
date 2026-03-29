@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, Avatar } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 const avatarData: { name: string; size: number; status?: 'online' | 'away' | 'offline' }[] = [
   { name: 'Alice Martin', size: 48, status: 'online' },
@@ -30,6 +31,13 @@ export function AvatarsSection() {
 
   return (
     <div>
+      <CodePreview
+        title="Avatars"
+        code={`import { Avatar } from '@acstane/ui';
+
+<Avatar name="Marcin Kondrat" size={48} status="online" />
+<Avatar name="Jan Kowalski" size={40} status="away" />`}
+      >
       {/* Sizes & Status */}
       <div style={{ marginBottom: 32 }}>
         <h3 style={subSectionTitle}>Sizes &amp; Status</h3>
@@ -60,6 +68,7 @@ export function AvatarsSection() {
           ))}
         </div>
       </div>
+      </CodePreview>
     </div>
   );
 }

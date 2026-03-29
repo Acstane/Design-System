@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme, Pagination } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 export function PaginationSection() {
   const theme = useTheme();
@@ -7,18 +8,27 @@ export function PaginationSection() {
 
   return (
     <div>
-      <Pagination page={page} total={12} onChange={setPage} />
+      <CodePreview
+        title="Pagination"
+        code={`import { Pagination } from '@acstane/ui';
 
-      <div
-        style={{
-          marginTop: 16,
-          fontSize: 13,
-          color: theme.colors.neutral[400],
-          fontFamily: theme.fonts.mono,
-        }}
+const [page, setPage] = useState(3);
+
+<Pagination page={page} total={12} onChange={setPage} />`}
       >
-        Page {page} of 12
-      </div>
+        <Pagination page={page} total={12} onChange={setPage} />
+
+        <div
+          style={{
+            marginTop: 16,
+            fontSize: 13,
+            color: theme.colors.neutral[400],
+            fontFamily: theme.fonts.mono,
+          }}
+        >
+          Page {page} of 12
+        </div>
+      </CodePreview>
     </div>
   );
 }

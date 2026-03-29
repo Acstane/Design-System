@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme, Checkbox } from '../../../src';
+import { CodePreview } from '../CodePreview';
 
 export function CheckboxSection() {
   const theme = useTheme();
@@ -27,6 +28,23 @@ export function CheckboxSection() {
 
   return (
     <div>
+      <CodePreview
+        title="Checkbox & Radio"
+        code={`import { Checkbox } from '@acstane/ui';
+
+<Checkbox
+  label="users:read"
+  checked={checked}
+  onChange={setChecked}
+/>
+
+<Checkbox
+  radio
+  label="JWT (default)"
+  checked={selected === 'jwt'}
+  onChange={() => setSelected('jwt')}
+/>`}
+      >
       <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap' }}>
         {/* Checkboxes */}
         <div style={{ flex: '1 1 220px' }}>
@@ -61,6 +79,7 @@ export function CheckboxSection() {
           </div>
         </div>
       </div>
+      </CodePreview>
     </div>
   );
 }
